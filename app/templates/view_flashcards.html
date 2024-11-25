@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}View Flashcards{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Flashcards for {{ subject_name }}</h2>
+
+    <!-- Option to Add Flashcards -->
+    <form method="post" action="/add_flashcard" style="margin-bottom: 20px;">
+        <input type="hidden" name="subject_id" value="{{ subject_id }}">
+        <label for="card">Card:</label>
+        <input type="text" id="card" name="card" required>
+        <label for="definition">Definition:</label>
+        <input type="text" id="definition" name="definition" required>
+        <button type="submit" class="add-card-button">Add Card</button>
+    </form>
+
+    <!-- Options to View Flashcards and Take Quiz -->
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+        <form method="get" action="/view_flashcards/{{ subject_id }}" style="margin-right: 10px;">
+            <button type="submit" class="view-cards-button">View Cards</button>
+        </form>
+        <form method="post" action="/quiz" style="margin-left: 10px;">
+            <input type="hidden" name="subject_id" value="{{ subject_id }}">
+            <label for="num_questions" style="margin-right: 10px;">Number of Questions:</label>
+            <input type="number" id="num_questions" name="num_questions" min="1" max="{{ flashcards|length }}" required>
+            <button type="submit" class="quiz-button">Take Quiz</button>
+        </form>
+    </div>
+
+    <!-- Flashcards Table -->
+    {% if flashcards %}
+    <form method="get" action="/download_flashcards/{{ subject_id }}" style="margin-bottom: 10px;">
+        <button type="submit" class="download-button">Download Flashcards</button>
+    </form>
+
+    <h3>Existing Flashcards:</h3>
+    <table style="width: 100%; border-collapse: collapse; text-align: left; margin-top: 20px; border: 1px solid #ccc;">
+        <thead>
+            <tr>
+                <th style="border: 1px solid #ccc; padding: 10px;">Card</th>
+                <th style="border: 1px solid #ccc; padding: 10px;">Definition</th>
+                <th style="border: 1px solid #ccc; padding: 10px;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flashcard in flashcards %}
+            <tr>
+                <td style="border: 1px solid #ccc; padding: 10px;">{{ flashcard.card }}</td>
+                <td style="border: 1px solid #ccc; padding: 10px;">{{ flashcard.definition }}</td>
+                <td style="border: 1px solid #ccc; padding: 10px;">
+                    <!-- Delete Flashcard Button -->
+                    <form method="post" action="/delete_flashcard" style="display: inline;">
+                        <input type="hidden" name="flashcard_id" value="{{ flashcard.id }}">
+                        <input type="hidden" name="subject_id" value="{{ subject_id }}">
+                        <button type="submit" class="delete-button">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No flashcards available for this subject.</p>
+    {% endif %}
+
+    <!-- Back to Dashboard -->
+    <form method="get" action="/dashboard" style="margin-top: 20px;">
+        <button type="submit">Back to Dashboard</button>
+    </form>
+</div>
+{% endblock %}

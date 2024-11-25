@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Result{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Quiz Result</h2>
+    <p><strong>Score:</strong> {{ correct_count }}/{{ total }}</p>
+    
+    <table class="quiz-results-table">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Your Answer</th>
+                <th>Correct Answer</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <tr class="{% if result.is_correct %}correct{% else %}incorrect{% endif %}">
+                <td>{{ result.question }}</td>
+                <td>{{ result.user_answer }}</td>
+                <td>{{ result.actual_answer }}</td>
+                <td>
+                    <strong>{{ "Correct" if result.is_correct else "Incorrect" }}</strong>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="/dashboard" class="action-button" style="display: inline-block; margin-top: 20px;">Back to Dashboard</a>
+
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Quiz</h2>
+    <form method="post" action="/quiz/submit">
+        <input type="hidden" name="subject_id" value="{{ subject_id }}">
+        {% for flashcard in flashcards %}
+        <div>
+            <p><strong>Question {{ loop.index }}:</strong> {{ flashcard.card }}</p>
+            <input type="hidden" name="flashcard_ids" value="{{ flashcard.id }}">
+            <label for="answer_{{ flashcard.id }}">Your Answer:</label>
+            <input type="text" id="answer_{{ flashcard.id }}" name="answers" required>
+        </div>
+        {% endfor %}
+        <button type="submit">Submit Answers</button>
+    </form>
+</div>
+{% endblock %}

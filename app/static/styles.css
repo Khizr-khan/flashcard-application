@@ -1,0 +1,183 @@
+/* Theme Colors */
+:root {
+    --primary-color: #A50000;
+    --primary-light: #FFCCCC;
+    --primary-dark: #800000;
+    --neutral-bg: #F5F5F5;
+    --text-color: #333333;
+    --white-text: #FFFFFF;
+    --success-bg: #d4edda; /* Green for success */
+    --success-text: #155724; /* Dark green text */
+    --error-bg: #f8d7da; /* Red for error */
+    --error-text: #721c24; /* Dark red text */
+}
+
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--neutral-bg);
+    color: var(--text-color);
+}
+
+/* Header Styling */
+header {
+    background-color: var(--primary-color);
+    color: var(--white-text);
+    padding: 15px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header nav a {
+    color: var(--white-text);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main Section Styling */
+main {
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--primary-light);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.action-button {
+    background-color: var(--primary-color);
+    color: var(--white-text);
+    border: none;
+    padding: 8px 15px; /* Reduced padding for smaller size */
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9rem; /* Slightly smaller font size */
+    margin-top: 10px;
+}
+
+.action-button:hover {
+    background-color: var(--primary-dark);
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+
+.delete-button {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.delete-button:hover {
+    background-color: #c9302c;
+}
+
+/* Table Styling */
+.flashcards-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.flashcards-table th,
+.flashcards-table td {
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    text-align: left;
+}
+
+.flashcards-table th {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: bold;
+}
+
+.flashcards-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Quiz Result Table Styling */
+.quiz-results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.quiz-results-table th,
+.quiz-results-table td {
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    text-align: left;
+}
+
+.quiz-results-table th {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    font-weight: bold;
+    text-align: center;
+}
+
+.quiz-results-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.quiz-results-table tr.correct {
+    background-color: var(--success-bg); /* Green for correct answers */
+    color: var(--success-text); /* Dark green text */
+}
+
+.quiz-results-table tr.incorrect {
+    background-color: var(--error-bg); /* Red for incorrect answers */
+    color: var(--error-text); /* Dark red text */
+}
+
+
+/* Input Field Styling */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--primary-dark);
+    color: var(--white-text);
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}

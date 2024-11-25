@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Flashcard Added{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Flashcard Added Successfully!</h2>
+    <form method="get" action="/flashcards/{{ subject_id }}">
+        <button type="submit" class="manage-flashcards-button">Back to Manage Flashcards</button>
+    </form>
+</div>
+{% endblock %}

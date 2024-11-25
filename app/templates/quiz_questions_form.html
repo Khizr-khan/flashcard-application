@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Setup{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Start Quiz</h2>
+    <form method="post" action="/quiz">
+        <input type="hidden" name="subject_id" value="{{ subject_id }}">
+        <label for="num_questions">How many questions do you want to play?</label>
+        <input type="number" id="num_questions" name="num_questions" min="1" max="{{ max_questions }}" required>
+        <button type="submit">Start Quiz</button>
+    </form>
+</div>
+{% endblock %}

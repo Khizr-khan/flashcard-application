@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Flashcards{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Manage Flashcards for {{ subject_name }}</h2>
+
+    <!-- Form to Add a New Flashcard -->
+    <form method="post" action="/add_flashcard" style="margin-bottom: 20px;">
+        <input type="hidden" name="subject_id" value="{{ subject_id }}">
+        <label for="new_card">New Flashcard:</label>
+        <input type="text" id="new_card" name="card" placeholder="Enter card question" required>
+        <label for="new_definition">Definition:</label>
+        <input type="text" id="new_definition" name="definition" placeholder="Enter card definition" required>
+        <button type="submit" class="action-button">Add Flashcard</button>
+    </form>
+
+    <!-- Button to View All Flashcards -->
+    <form method="get" action="/view_flashcards/{{ subject_id }}">
+        <button type="submit" class="action-button">View All Flashcards</button>
+    </form>
+</div>
+{% endblock %}

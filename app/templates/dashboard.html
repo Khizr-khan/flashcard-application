@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Manage Subjects</h2>
+
+    <!-- Dropdown to Delete a Subject -->
+    <form method="post" action="/delete_subject" class="form-section">
+        <label for="delete_subject_id">Delete a Subject:</label>
+        <select id="delete_subject_id" name="subject_id" required>
+            <option value="" disabled selected>-- Select a Subject to Delete --</option>
+            {% for subject in subjects %}
+            <option value="{{ subject.id }}">{{ subject.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="manage-subjects-button">Delete</button>
+    </form>
+
+    <!-- Dropdown to Access Flashcards -->
+    <form method="post" action="/flashcards" class="form-section">
+        <label for="select_subject_id">Select a Subject:</label>
+        <select id="select_subject_id" name="subject_id" required>
+            <option value="" disabled selected>-- Select a Subject --</option>
+            {% for subject in subjects %}
+            <option value="{{ subject.id }}">{{ subject.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="manage-subjects-button">View Flashcards</button>
+    </form>
+
+    <!-- Add New Subject -->
+    <form method="post" action="/create_subject" class="form-section">
+        <label for="new_subject_name">Add New Subject:</label>
+        <input type="text" id="new_subject_name" name="name" required placeholder="Enter subject name">
+        <button type="submit" class="manage-subjects-button">Add Subject</button>
+    </form>
+</div>
+{% endblock %}
